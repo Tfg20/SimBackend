@@ -33,7 +33,9 @@ server.get("/Results/:record_id", async (req, response, next) => {
     }
 });
 
-server.listen("3000", async () => {
+const port = process.env.port || 3000;
+
+server.listen(port, async () => {
     try {
         await client.connect();
         collection = client.db("Simulation").collection("Results");
